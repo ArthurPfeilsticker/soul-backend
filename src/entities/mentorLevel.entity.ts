@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Mentor } from './mentor.entity';
 
 @Entity()
 export class MentorLevel {
@@ -8,9 +9,12 @@ export class MentorLevel {
   @Column()
   name: string;
 
-  @Column()
-  requirements: string;
+  @Column('simple-array')
+  requirements: string[];
 
   @Column()
   minYears: number;
+
+  @OneToMany(() => Mentor, (mentor) => mentor.levelInfo)
+  mentors: Mentor[];
 }

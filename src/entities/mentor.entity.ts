@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, ManyToOne } from 'typeorm';
+import { MentoringSession } from './mentoring-session.entity';
+import { MentorLevel } from './mentorLevel.entity';
 
 @Entity()
 export class Mentor {
@@ -8,15 +10,21 @@ export class Mentor {
   @Column()
   name: string;
 
-  @Column()
-  totalMentoringTime: number; //minutes
+  @Column({ type: 'int', default: 0 })
+  totalMentoringMinutes: number;
 
-  @Column()
+  @Column({ type: 'int', default: 1 })
   level: number;
 
-  @Column()
+  @Column({ type: 'int', default: 0 })
   experience: number;
 
-  @Column()
+  @Column({type: 'boolean', default: false})
   isLeader: boolean;
+
+  @OneToMany(() => MentoringSession, (session) => session.mentor)
+  mentoringSessions: MentoringSession[];
+
+  @ManyToOne(() => MentorLevel, (level) => level.mentors)
+  levelInfo: MentorLevel;
 }

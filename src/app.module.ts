@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm/dist';
 import { MentorsModule } from './modules/mentors/mentors.module';
 import { ConfigModule } from '@nestjs/config';
+import { MenteesModule } from './modules/mentees/mentees.module';
+import { MentoringSessionModule } from './modules/mentoring-session/mentoring-session.module';
 
 @Module({
   imports: [
@@ -22,6 +24,8 @@ import { ConfigModule } from '@nestjs/config';
       },
     }),
     MentorsModule,
+    MenteesModule,
+    MentoringSessionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
