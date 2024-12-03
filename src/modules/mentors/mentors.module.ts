@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Mentor } from '../../entities/mentor.entity';
-import { MentorsService } from 'src/services/mentors/mentors.service';
-import { MentorsController } from 'src/controllers/mentors/mentors.controller';
+import { MentorsService } from '../../services/mentors/mentors.service';
+import { MentorsController } from '../../controllers/mentors/mentors.controller';
 
 @Module({
     imports: [TypeOrmModule.forFeature([Mentor])],

@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
-import { MentorsService } from 'src/services/mentors/mentors.service';
+import { MentorsService } from '../../services/mentors/mentors.service';
 import { Mentor } from '../../entities/mentor.entity';
 //import { MentorsModule } from 'src/modules/mentors/mentors.module';
 
