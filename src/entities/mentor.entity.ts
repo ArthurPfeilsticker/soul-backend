@@ -9,7 +9,7 @@ export class Mentor {
   name: string;
 
   @Column()
-  totalMentoringTime: number;
+  totalMentoringTime: number; //minutes
 
   @Column()
   level: number;
