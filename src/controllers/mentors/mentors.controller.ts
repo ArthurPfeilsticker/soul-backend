@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { MentorsService } from 'src/services/mentors/mentors.service';
-import { Mentor } from 'src/entities/mentor.entity';
-import { MentorsModule } from 'src/modules/mentors/mentors.module';
+import { Mentor } from '../../entities/mentor.entity';
+//import { MentorsModule } from 'src/modules/mentors/mentors.module';
 
 @Controller('mentors')
 export class MentorsController {
