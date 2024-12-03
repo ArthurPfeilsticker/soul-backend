@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateMentoringSessionDto } from 'src/dtos/mentoring-session.dto';
-import { Mentee } from 'src/entities/mentee.entity';
-import { Mentor } from 'src/entities/mentor.entity';
-import { MentoringSession } from 'src/entities/mentoring-session.entity';
 import { Repository } from 'typeorm';
+import { CreateMentoringSessionDto } from '../../dtos/mentoring-session.dto';
+import { Mentee } from '../../entities/mentee.entity';
+import { Mentor } from '../../entities/mentor.entity';
+import { MentoringSession } from '../../entities/mentoring-session.entity';
 
 @Injectable()
 export class MentoringSessionService {
