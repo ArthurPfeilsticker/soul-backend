@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { MentorsService } from '../../services/mentors/mentors.service';
 import { Mentor } from '../../entities/mentor.entity';
-//import { MentorsModule } from 'src/modules/mentors/mentors.module';
+import { CreateMentorDto } from '../../dtos/mentor.dto';
 
 @Controller('mentors')
 export class MentorsController {
@@ -9,20 +9,20 @@ export class MentorsController {
 
     //creates a new mentor
     @Post()
-    async create(@Body() mentorData: Mentor): Promise<Mentor>{
-        return this.mentorService.create(mentorData);
+    async create(@Body() CreateMentorDto: CreateMentorDto): Promise<Mentor>{
+        return this.mentorService.create(CreateMentorDto);
     }
 
     //gets all the signed up mentors
     @Get()
     async findAll(): Promise<Mentor[]>{
-        return this.mentorService.findAll();
+        return this.mentorService.getAll();
     }
 
     //gets a mentor by his ID
     @Get(':id')
-    async findOne(@Param('id') id: number): Promise<Mentor>{
-        return this.mentorService.findOne(id);
+    async getMentorById(@Param('id') id: number): Promise<Mentor>{
+        return this.mentorService.getMentorById(id);
     }
 
     //updates a mentor searching by his ID
