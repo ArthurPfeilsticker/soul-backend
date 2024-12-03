@@ -3,10 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm/dist';
 import { MentorsModule } from './modules/mentors/mentors.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-    //ConfigModule.forRoot(),
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: process.env.DB_TYPE as any,
       host: process.env.PG_HOST,
@@ -16,6 +17,9 @@ import { MentorsModule } from './modules/mentors/mentors.module';
       database: process.env.PG_DB,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     }),
     MentorsModule,
   ],
