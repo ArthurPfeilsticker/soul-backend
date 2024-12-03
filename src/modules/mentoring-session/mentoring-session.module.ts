@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MentoringSessionController } from 'src/controllers/mentoring-session/mentoring-session.controller';
-import { Mentee } from 'src/entities/mentee.entity';
-import { Mentor } from 'src/entities/mentor.entity';
+import { MentoringSessionController } from '../../controllers/mentoring-session/mentoring-session.controller';
+import { Mentee } from '../../entities/mentee.entity';
+import { Mentor } from '../../entities/mentor.entity';
 import { MentoringSession } from 'src/entities/mentoring-session.entity';
 import { MentoringSessionService } from 'src/services/mentoring-session/mentoring-session.service';
 
