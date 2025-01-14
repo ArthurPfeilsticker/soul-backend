@@ -4,14 +4,6 @@ import * as bodyParser from 'body-parser';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import * as express from 'express'
 
-const server = express();
-
-export const handler = async (event: any, context: any) => {
-  const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-  await app.init();
-  return server(event, context);
-};
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
