@@ -33,4 +33,29 @@ export class MentoringSessionService {
         mentoringSession.mentee = mentee;
         return this.mentoringSessionRepository.save(mentoringSession);
       }
+
+      async bulkCreate(mentoringSessionsData: MentoringSession[]): Promise<MentoringSession[]> {
+        const savedSessions: MentoringSession[] = [];
+    
+        for (const sessionData of mentoringSessionsData) {
+            const mentor = await this.mentorRepository.findOne({ where: { id: sessionData.mentor.id } });
+            const mentee = await this.menteeRepository.findOne({ where: { id: sessionData.mentee.id } });
+    
+            if (!mentor) {
+                throw new Error(`Mentor with ID ${sessionData.mentor.id} not found.`);
+            }
+    
+            if (!mentee) {
+                throw new Error(`Mentee with ID ${sessionData.mentee.id} not found.`);
+            }
+    
+            const mentoringSession = this.mentoringSessionRepository.create(sessionData);
+            mentoringSession.mentor = mentor;
+            mentoringSession.mentee = mentee;
+    
+            savedSessions.push(await this.mentoringSessionRepository.save(mentoringSession));
+        }
+    
+        return savedSessions;
+    }    
 }

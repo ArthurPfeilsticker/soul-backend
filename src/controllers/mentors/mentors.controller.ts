@@ -13,6 +13,13 @@ export class MentorsController {
         return this.mentorService.create(CreateMentorDto);
     }
 
+    // Accepts an array of mentors
+    @Post('bulk')
+    async createMany(@Body() createMentorsDto: CreateMentorDto[]): Promise<Mentor[]> {
+        return this.mentorService.createMany(createMentorsDto);
+    }
+
+
     //gets all the signed up mentors
     @Get()
     async findAll(): Promise<Mentor[]>{

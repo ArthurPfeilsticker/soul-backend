@@ -17,6 +17,11 @@ export class MentorsService {
         return this.mentorRepository.save(mentor);
     }
 
+    //creates many mentors at once
+    async createMany(createMentorsDto: CreateMentorDto[]): Promise<Mentor[]> {
+        return this.mentorRepository.save(createMentorsDto); // Se estiver usando TypeORM
+    }    
+
     //gets all signed up mentors
     async getAll(): Promise<Mentor[]>{
         return this.mentorRepository.find();

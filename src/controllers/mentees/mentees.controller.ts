@@ -12,6 +12,11 @@ export class MenteeController {
         return this.menteesService.create(createMenteeDto);
     }
 
+    @Post('bulk')
+    async createMany(@Body() createMenteesDto: CreateMenteeDto[]): Promise<Mentee[]> {
+        return Promise.all(createMenteesDto.map(dto => this.menteesService.create(dto)));
+    }
+
     //gets all the signed up mentees
     @Get()
     async findAll(): Promise<Mentee[]>{
